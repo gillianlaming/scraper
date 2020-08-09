@@ -5,7 +5,7 @@ import pandas as pd
 
 #url of the page that we want to Scarpe
 #+str() is used to convert int datatype of the page no. and concatenate that to a URL for pagination purposes.
-URL = 'https://www.cnn.com/'
+URL = 'https://www.nytimes.com/'
 
 try:
      # this might throw an exception if something goes wrong.
@@ -24,7 +24,10 @@ except Exception as e:
     
    #continue
 
-content=BeautifulSoup(page.text,'html.parser')
-print(content)
-headlines=content.find_all('h3',attrs={'class':'cd__headline'})
-print(headlines)
+content=BeautifulSoup(page.content,'html.parser')
+#print(content.prettify())
+weblinks = content.find_all('article')
+#mainContent=content.find_all("div",class_="balancedHeadline")
+print(len(weblinks))
+
+
